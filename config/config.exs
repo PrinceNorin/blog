@@ -1,0 +1,32 @@
+# This file is responsible for configuring your application
+# and its dependencies with the aid of the Mix.Config module.
+#
+# This configuration file is loaded before any dependency and
+# is restricted to this project.
+use Mix.Config
+
+# General application configuration
+config :blog,
+  ecto_repos: [Blog.Repo]
+
+# Configures the endpoint
+config :blog, BlogWeb.Endpoint,
+  url: [host: "localhost"],
+  secret_key_base: "W3kTNB82TWQmZk6X9K/XCMMIQt48CL0LqzmEeBXqWRgLWU8lHyTPWY1dQlKRp8FJ",
+  render_errors: [view: BlogWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Blog.PubSub,
+           adapter: Phoenix.PubSub.PG2]
+
+# Configures Elixir's Logger
+config :logger, :console,
+  format: "$time $metadata[$level] $message\n",
+  metadata: [:request_id]
+
+# Guardian configuration
+config :blog, Blog.Auth.Guardian,
+  issuer: "blog",
+  secret_key: "leHK8iLwZFYWBf56iaAchjX3TXcod68DvhaA+Ictzy+0IVmRfAo9AWgDAZR/o4X+"
+
+# Import environment specific config. This must remain at the bottom
+# of this file so it overrides the configuration defined above.
+import_config "#{Mix.env}.exs"

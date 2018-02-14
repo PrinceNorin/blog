@@ -97,4 +97,8 @@ defmodule Blog.Account do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  def new_user do
+    Ecto.Changeset.cast(%User{}, %{}, [])
+  end
 end

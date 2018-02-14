@@ -35,6 +35,9 @@ defmodule BlogWeb.Router do
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create
+
+    get "/register", RegisterController, :new
+    post "/register", RegisterController, :create
   end
 
   scope "/", BlogWeb do

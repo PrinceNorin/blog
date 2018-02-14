@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title text-center">Create Account</h2>
+
+    <%= form_for @chset, register_path(@conn, :create), fn f -> %>
+      <div class="form-group">
+        <%= label f, :name, class: "control-label" %>
+        <div class="input-group">
+          <%= text_input f, :name, class: form_control_class(f, :name), autofocus: true %>
+          <%= error_tag f, :name %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= label f, :password, class: "control-label" %>
+        <div class="input-group">
+          <%= password_input f, :password, class: form_control_class(f, :password) %>
+          <%= error_tag f, :password %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= submit "Register", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
